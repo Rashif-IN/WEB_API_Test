@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{30C4BB24-BAB8-42CF-B31B-93263DCC8D29}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/CommentController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/PostController.cs">
     <Files>
-      <File FileName="Controllers/AuthorController.cs" Line="53" Column="59" />
-      <File FileName="Controllers/PostController.cs" />
-      <File FileName="Controllers/CommentController.cs" Line="53" Column="10" />
-      <File FileName="Model/ApiDocRequest.cs" Line="36" Column="1" NotebookId="1" />
+      <File FileName="Startup.cs" Line="32" Column="38" />
+      <File FileName="Middleware/AuthMiddleware.cs" Line="29" Column="1" />
+      <File FileName="Controllers/AuthorController.cs" Line="125" Column="10" />
+      <File FileName="Controllers/CommentController.cs" Line="99" Column="59" />
+      <File FileName="Controllers/PostController.cs" Line="100" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,8 +13,9 @@
           <Node name="WEBAPI_Test" expanded="True">
             <Node name="WEBAPI_Test" expanded="True">
               <Node name="Controllers" expanded="True">
-                <Node name="CommentController.cs" selected="True" />
+                <Node name="PostController.cs" selected="True" />
               </Node>
+              <Node name="Middleware" expanded="True" />
               <Node name="Model" expanded="True" />
             </Node>
           </Node>

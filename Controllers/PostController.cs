@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WEBAPI_Test.Model;
@@ -53,42 +54,50 @@ namespace WEBAPI_Test.Controllers
             return Ok(Posts.RemoveAll(e => e.id == Id));
         }
 
-        [HttpPatch("{id}")]
-        public IActionResult AuthorPatch(int Id, Post post)
-        {
-            Post A = Posts.Where(e => e.id == Id).First();
-            int index = Posts.IndexOf(A);
-            if (post.id == 0)
-            {
-                post.id = A.id;
-            }
-            if (post.title == null)
-            {
-                post.title = A.title;
-            }
-            if (post.content == null)
-            {
-                post.content = A.content;
-            }
-            if (post.tags == null)
-            {
-                post.tags = A.tags;
-            }
-            if (post.create_time == null)
-            {
-                post.create_time = A.create_time;
-            }
-            if (post.update_time == null)
-            {
-                post.update_time = A.update_time;
-            }
-            if (post.author_id == 0)
-            {
-                post.author_id = A.author_id;
-            }
-            Posts[index] = new Post() { id = post.id, title = post.title, content = post.content, tags = post.tags, create_time = post.create_time, update_time = post.update_time, author_id = post.author_id };
+        //[HttpPatch("{id}")]
+        //public IActionResult PostPatch(int Id, Post post)
+        //{
+        //    Post A = Posts.Where(e => e.id == Id).First();
+        //    int index = Posts.IndexOf(A);
+        //    if (post.id == 0)
+        //    {
+        //        post.id = A.id;
+        //    }
+        //    if (post.title == null)
+        //    {
+        //        post.title = A.title;
+        //    }
+        //    if (post.content == null)
+        //    {
+        //        post.content = A.content;
+        //    }
+        //    if (post.tags == null)
+        //    {
+        //        post.tags = A.tags;
+        //    }
+        //    if (post.create_time == null)
+        //    {
+        //        post.create_time = A.create_time;
+        //    }
+        //    if (post.update_time == null)
+        //    {
+        //        post.update_time = A.update_time;
+        //    }
+        //    if (post.author_id == 0)
+        //    {
+        //        post.author_id = A.author_id;
+        //    }
+        //    Posts[index] = new Post() { id = post.id, title = post.title, content = post.content, tags = post.tags, create_time = post.create_time, update_time = post.update_time, author_id = post.author_id };
 
-            return Ok(Posts);
+        //    return Ok(Posts);
+        //}
+
+        [HttpPatch("{id}")]
+        public IActionResult PatchAuthor([FromBody]JsonPatchDocument<Post> patch, int Id)
+        {
+            patch.ApplyTo(Posts.Find(e => e.id == Id));
+
+            return Ok(Posts.Find(e => e.id == Id));
         }
     }
 }

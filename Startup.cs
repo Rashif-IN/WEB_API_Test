@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using WEBAPI_Test.Middleware;
 
 namespace WEBAPI_Test
 {
@@ -26,6 +27,9 @@ namespace WEBAPI_Test
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services
+                .AddControllersWithViews()
+                .AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,11 +40,18 @@ namespace WEBAPI_Test
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+
+            //app.UseMiddleware<AuthMiddleware>();
+
+            app.UseAuthMid();
 
             app.UseRouting();
 
             app.UseAuthorization();
+
+            
+
 
             app.UseEndpoints(endpoints =>
             {

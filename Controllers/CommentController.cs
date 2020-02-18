@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WEBAPI_Test.Model;
@@ -54,42 +55,50 @@ namespace WEBAPI_Test.Controllers
             return Ok(Comments.RemoveAll(e => e.id == Id));
         }
 
-        [HttpPatch("{id}")]
-        public IActionResult CommentPatch(int Id, Comment comment)
-        {
-            Comment A = Comments.Where(e => e.id == Id).First();
-            int index = Comments.IndexOf(A);
-            if (comment.id == 0)
-            {
-                comment.id = A.id;
-            }
-            if (comment.content == null)
-            {
-                comment.content = A.content;
-            }
-            if (comment.create_time == null)
-            {
-                comment.create_time = A.create_time;
-            }
-            if (comment.author_id == 0)
-            {
-                comment.author_id = A.author_id;
-            }
-            if (comment.email == null)
-            {
-                comment.email = A.email;
-            }
-            if (comment.url == null)
-            {
-                comment.url = A.url;
-            }
-            if (comment.post_id == 0)
-            {
-                comment.post_id = A.post_id;
-            }
-            Comments[index] = new Comment() { id = comment.id, content = comment.content, create_time = comment.create_time, author_id = comment.author_id, email = comment.email, url = comment.url, post_id = comment.post_id };
+        //[HttpPatch("{id}")]
+        //public IActionResult CommentPatch(int Id, Comment comment)
+        //{
+        //    Comment A = Comments.Where(e => e.id == Id).First();
+        //    int index = Comments.IndexOf(A);
+        //    if (comment.id == 0)
+        //    {
+        //        comment.id = A.id;
+        //    }
+        //    if (comment.content == null)
+        //    {
+        //        comment.content = A.content;
+        //    }
+        //    if (comment.create_time == null)
+        //    {
+        //        comment.create_time = A.create_time;
+        //    }
+        //    if (comment.author_id == 0)
+        //    {
+        //        comment.author_id = A.author_id;
+        //    }
+        //    if (comment.email == null)
+        //    {
+        //        comment.email = A.email;
+        //    }
+        //    if (comment.url == null)
+        //    {
+        //        comment.url = A.url;
+        //    }
+        //    if (comment.post_id == 0)
+        //    {
+        //        comment.post_id = A.post_id;
+        //    }
+        //    Comments[index] = new Comment() { id = comment.id, content = comment.content, create_time = comment.create_time, author_id = comment.author_id, email = comment.email, url = comment.url, post_id = comment.post_id };
 
-            return Ok(Comments);
+        //    return Ok(Comments);
+        //}
+
+        [HttpPatch("{id}")]
+        public IActionResult PatchAuthor([FromBody]JsonPatchDocument<Comment> patch, int Id)
+        {
+            patch.ApplyTo(Comments.Find(e => e.id == Id));
+
+            return Ok(Comments.Find(e => e.id == Id));
         }
     }
 }
