@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WEBAPI_Test.Model;
+
 
 namespace WEBAPI_Test.Controllers
 {
@@ -42,9 +45,10 @@ namespace WEBAPI_Test.Controllers
         [HttpPost]
         public IActionResult AuthorAdd(Author author)
         {
-            var userAdd = new Author() { id = author.id, username = author.username, password = author.password, salt = author.salt , email = author.email, profile = author.profile };
-            Authors.Add(userAdd);
-            return Ok(Authors);
+            //var userAdd = new Author() { id = author.id, username = author.username, password = author.password, salt = author.salt , email = author.email, profile = author.profile };
+            //Authors.Add(userAdd);
+            //return Ok(Authors);
+            return Ok(Authors.Append(author));
         }
 
         [HttpDelete("{id}")]
@@ -53,14 +57,74 @@ namespace WEBAPI_Test.Controllers
             return Ok(Authors.RemoveAll(e => e.id == Id));
         }
 
-        [HttpPatch]
-        public IActionResult AuthorPatch(Author author)
+        [HttpPatch("{id}")]
+        public IActionResult AuthorPatch(int Id, Author author)
         {
-            var userAdd = new Author() { id = author.id, username = author.username, password = author.password, salt = author.salt, email = author.email, profile = author.profile };
-            Authors.Add(userAdd);
+            Author A  = Authors.Where(e => e.id == Id).First();
+            int index = Authors.IndexOf(A);
+            if(author.id==0)
+            {
+                author.id = A.id;
+            }
+            if (author.username == null)
+            {
+                author.username = A.username;
+            }
+            if (author.password == null)
+            {
+                author.password = A.password;
+            }
+            if (author.salt == null)
+            {
+                author.salt = A.salt;
+            }
+            if (author.email == null)
+            {
+                author.email = A.email;
+            }
+            if (author.profile == null)
+            {
+                author.profile = A.profile;
+            }
+            Authors[index] = new Author() { id = author.id, username = author.username, password = author.password, salt = author.salt, email = author.email, profile = author.profile };
+            
             return Ok(Authors);
         }
 
+        //[HttpPatch("{id}")]
+        //public IActionResult AuthorPatch([FromBody] JsonPatchDocument<Author> author, Author authoradd, int Id)
+        //{
+        //    var AuP = Authors.Find(e => e.id == Id);
+        //    if (author != null)
+        //    {
+        //        var userAdd = AuthorAdd(authoradd);
+
+        //        author.ApplyTo(userAdd, ModelState);
+
+        //        if (!ModelState.IsValid)
+        //        {
+        //            return BadRequest(ModelState);
+        //        }
+
+        //        return new ObjectResult(userAdd);
+        //    }
+        //    else
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+        //}
+
+        //[HttpPatch("{id}")]
+        //public IActionResult PatchAuthor([FromBody]JsonPatchDocument<Author> patch, Author authoradd, int Id)
+        //{
+        //    var userAdd = AuthorAdd(authoradd);
+        //    //var userAdd = new Author() { id = X.id, username = X.username, password = X.password, salt = X.salt, email = X.email, profile = X.profile };
+        //    patch.ApplyTo(Authors);
+
+
+
+        //    return Ok(userAdd);
+        //}
 
     }
 }
