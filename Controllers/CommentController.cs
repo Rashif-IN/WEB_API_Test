@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using WEBAPI_Test.Middleware;
 using WEBAPI_Test.Model;
 
 namespace WEBAPI_Test.Controllers
@@ -31,19 +32,21 @@ namespace WEBAPI_Test.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            //return Ok(Users); 
+            Log_.PopulateLog("Comment Get");
             return Ok(new { status = "success", message = "success get data", data = Comments });
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int Id)
         {
+            Log_.PopulateLog($"Comment ID : {Id} Get");
             return Ok(Comments.Find(e => e.id == Id));
         }
 
         [HttpPost]
         public IActionResult AddComment(Comment comment)
         {
+            Log_.PopulateLog("Comment Posted");
             var commentAdd = new Comment() { id = comment.id, content = comment.content, create_time = comment.create_time, author_id = comment.author_id, email = comment.email, url = comment.url, post_id = comment.post_id };
             Comments.Add(commentAdd);
             return Ok(Comments);
@@ -52,6 +55,7 @@ namespace WEBAPI_Test.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteComment(int Id)
         {
+            Log_.PopulateLog($"Comment ID : {Id} Deleted");
             return Ok(Comments.RemoveAll(e => e.id == Id));
         }
 
@@ -96,6 +100,7 @@ namespace WEBAPI_Test.Controllers
         [HttpPatch("{id}")]
         public IActionResult PatchAuthor([FromBody]JsonPatchDocument<Comment> patch, int Id)
         {
+            Log_.PopulateLog($"Comment ID : {Id} Updated");
             patch.ApplyTo(Comments.Find(e => e.id == Id));
 
             return Ok(Comments.Find(e => e.id == Id));

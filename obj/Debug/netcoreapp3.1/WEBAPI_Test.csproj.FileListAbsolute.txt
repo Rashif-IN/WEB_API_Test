@@ -30,3 +30,4 @@
 /Users/user/Projects/WEBAPI_Test/obj/Debug/netcoreapp3.1/WEBAPI_Test.RazorAssemblyInfo.cache
 /Users/user/Projects/WEBAPI_Test/obj/Debug/netcoreapp3.1/WEBAPI_Test.RazorAssemblyInfo.cs
 /Users/user/Projects/WEBAPI_Test/obj/Debug/netcoreapp3.1/WEBAPI_Test.csproj.CopyComplete
+/Users/user/Projects/WEBAPI_Test/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll

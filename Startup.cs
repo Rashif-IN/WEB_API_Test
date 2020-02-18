@@ -42,9 +42,9 @@ namespace WEBAPI_Test
 
             //app.UseHttpsRedirection();
 
-            //app.UseMiddleware<AuthMiddleware>();
+            app.UseMiddleware<AuthMiddleware>();
 
-            app.UseAuthMid();
+            
 
             app.UseRouting();
 

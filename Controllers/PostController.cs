@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using WEBAPI_Test.Middleware;
 using WEBAPI_Test.Model;
 
 namespace WEBAPI_Test.Controllers
@@ -30,19 +31,21 @@ namespace WEBAPI_Test.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            //return Ok(Users); 
+            Log_.PopulateLog("Post Get");
             return Ok(new { status = "success", message = "success get data", data = Posts });
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int Id)
         {
+            Log_.PopulateLog($"Post ID : {Id} Get");
             return Ok(Posts.Find(e => e.id == Id));
         }
 
         [HttpPost]
         public IActionResult PostAdd(Post post)
         {
+            Log_.PopulateLog("Post Posted");
             var postAdd = new Post() { id = post.id, title = post.title, content = post.content, tags = post.tags, create_time = post.create_time, update_time = post.update_time, author_id = post.author_id };
             Posts.Add(postAdd);
             return Ok(Posts);
@@ -51,6 +54,7 @@ namespace WEBAPI_Test.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeletePost(int Id)
         {
+            Log_.PopulateLog($"Post ID : {Id} Deleted");
             return Ok(Posts.RemoveAll(e => e.id == Id));
         }
 
@@ -95,6 +99,7 @@ namespace WEBAPI_Test.Controllers
         [HttpPatch("{id}")]
         public IActionResult PatchAuthor([FromBody]JsonPatchDocument<Post> patch, int Id)
         {
+            Log_.PopulateLog($"Post ID : {Id} Updated");
             patch.ApplyTo(Posts.Find(e => e.id == Id));
 
             return Ok(Posts.Find(e => e.id == Id));

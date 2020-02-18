@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{30C4BB24-BAB8-42CF-B31B-93263DCC8D29}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/PostController.cs">
     <Files>
-      <File FileName="Startup.cs" Line="32" Column="38" />
-      <File FileName="Middleware/AuthMiddleware.cs" Line="29" Column="1" />
-      <File FileName="Controllers/AuthorController.cs" Line="125" Column="10" />
-      <File FileName="Controllers/CommentController.cs" Line="99" Column="59" />
-      <File FileName="Controllers/PostController.cs" Line="100" Column="10" />
+      <File FileName="Middleware/AuthMiddleware.cs" Line="57" Column="9" IsPinned="True" />
+      <File FileName="Startup.cs" Line="50" Column="1" />
+      <File FileName="Controllers/AuthorController.cs" Line="65" Column="50" />
+      <File FileName="Controllers/PostController.cs" Line="102" Column="57" />
+      <File FileName="Program.cs" Line="18" Column="1" />
+      <File FileName="app.log" Line="21" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -27,7 +28,10 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/user/Projects/WEBAPI_Test/Program.cs" relfile="Program.cs" line="22" column="1" />
+      <Breakpoint file="/Users/user/Projects/WEBAPI_Test/Startup.cs" relfile="Startup.cs" line="44" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
