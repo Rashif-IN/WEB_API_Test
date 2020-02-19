@@ -1,23 +1,21 @@
 ﻿<Properties StartupConfiguration="{30C4BB24-BAB8-42CF-B31B-93263DCC8D29}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/PostController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="app.log">
     <Files>
-      <File FileName="Middleware/AuthMiddleware.cs" Line="57" Column="9" IsPinned="True" />
-      <File FileName="Startup.cs" Line="50" Column="1" />
-      <File FileName="Controllers/AuthorController.cs" Line="65" Column="50" />
-      <File FileName="Controllers/PostController.cs" Line="102" Column="57" />
-      <File FileName="Program.cs" Line="18" Column="1" />
-      <File FileName="app.log" Line="21" Column="1" />
+      <File FileName="Controllers/AuthorController.cs" Line="9" Column="1" />
+      <File FileName="Controllers/PostController.cs" />
+      <File FileName="Program.cs" Line="22" Column="44" />
+      <File FileName="Middleware/AuthMiddleware.cs" Line="59" Column="10" />
+      <File FileName="app.log" Line="1" Column="58" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="WEBAPI_Test" expanded="True">
             <Node name="WEBAPI_Test" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="PostController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Middleware" expanded="True" />
               <Node name="Model" expanded="True" />
+              <Node name="app.log" selected="True" />
             </Node>
           </Node>
         </State>
@@ -29,7 +27,6 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/user/Projects/WEBAPI_Test/Program.cs" relfile="Program.cs" line="22" column="1" />
       <Breakpoint file="/Users/user/Projects/WEBAPI_Test/Startup.cs" relfile="Startup.cs" line="44" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

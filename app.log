@@ -18,3 +18,21 @@
 02/18/2020 19:22:02 200 POST 610.686 ms: Author Posted 
 02/18/2020 19:23:13 200 DELETE 40.536 ms: Author Deleted 
 02/18/2020 19:23:19 200 GET 62.835 ms: Author Get 
+02/18/2020 20:01:20 200 GET 763.572 ms: Author Get 
+02/18/2020 20:01:26 204 GET 81.445 ms: Author ID : 5 Get 
+02/19/2020 09:48:26 200 GET Microsoft.AspNetCore.Http.DefaultHttpContext 419.308 ms: Author Get 
+02/19/2020 09:56:46 200 GET Microsoft.AspNetCore.Http.DefaultHttpContext 4.718 ms: Author Get 
+02/19/2020 09:57:36 200 GET Microsoft.AspNetCore.Routing.RouteValueDictionary 176.435 ms: Author Get 
+02/19/2020 10:01:47 200 GET /author/ 340.522 ms: Author Get 
+02/19/2020 10:05:14 200 GET /author/  160.448 ms:  
+02/19/2020 10:06:32 200 GET /author/::162.533 ms:  
+02/19/2020 10:07:43 200 GET /author/:localhost:5000:211.995 ms:  
+02/19/2020 10:08:27 200 GET /author/:127.0.0.1:5000:2.747 ms:  
+[02/19/2020 10:18:14] Started GET /author/ for 127.0.0.1:5000  
+[02/19/2020 10:18:14] Completed 200 /author/ in 167.481  
+[02/19/2020 10:19:17] Started GET /author/ for 127.0.0.1:5000  
+[02/19/2020 10:19:17] Completed 200 127.0.0.1:5000/author/ in 187.74  
+[02/19/2020 10:20:33] Started GET /post/ for 127.0.0.1:5000  
+[02/19/2020 10:20:33] Completed 200 on 127.0.0.1:5000/post/ in 184.983  
+[02/19/2020 10:21:00] Started GET /post/1 for 127.0.0.1:5000  
+[02/19/2020 10:21:00] Completed 200 on 127.0.0.1:5000/post/1 in 76.159  

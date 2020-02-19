@@ -25,8 +25,8 @@ namespace WEBAPI_Test.Middleware
                 await _next(context);
                 //stop
                 var time_end = DateTime.Now - time_start;
-
-                Log_.SaveAllLog(context.Response.StatusCode.ToString(), context.Request.Method.ToString(),time_end.TotalMilliseconds.ToString());
+                
+                Log_.SaveAllLog(context.Response.StatusCode.ToString(), context.Request.Method.ToString(),time_end.TotalMilliseconds.ToString(), context.Request.Path.ToString(),context.Request.Host.ToString());
 
             }
             else
@@ -37,7 +37,7 @@ namespace WEBAPI_Test.Middleware
                 var data = System.Text.Encoding.UTF8.GetBytes(text);
                 await context.Response.Body.WriteAsync(data, 0, data.Length);
                 var time_end = DateTime.Now - time_start;
-                Log_.SaveAllLog(context.Response.StatusCode.ToString(), context.Request.Method.ToString(), time_end.TotalMilliseconds.ToString());
+                Log_.SaveAllLog(context.Response.StatusCode.ToString(), context.Request.Method.ToString(), time_end.TotalMilliseconds.ToString(), context.Request.Path.ToString(), context.Request.Host.ToString());
             }
 
         }
@@ -55,14 +55,15 @@ namespace WEBAPI_Test.Middleware
     {
         public static string Msg;
         
-        public static void SaveAllLog(string Y, string Z, string Time )
+        public static void SaveAllLog(string StatusCode, string Method, string Time, string RequestPath ,string Address)
         {
-                File.AppendAllText(@"/Users/user/Projects/WEBAPI_Test/app.log", $"{DateTime.Now} {Y} {Z} {Time} ms: {Msg} \n");
+            File.AppendAllText(@"/Users/user/Projects/WEBAPI_Test/app.log", $"[{DateTime.Now}] Started {Method} {RequestPath} for {Address}  \n");
+            File.AppendAllText(@"/Users/user/Projects/WEBAPI_Test/app.log", $"[{DateTime.Now}] Completed {StatusCode} on {Address}{RequestPath} in {Time}  \n");
         }
 
         public static void PopulateLog(string msg)
         {
-           
+
             Msg = msg;
         }
     }
