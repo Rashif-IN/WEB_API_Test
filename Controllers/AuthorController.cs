@@ -32,28 +32,28 @@ namespace WEBAPI_Test.Controllers
         public IActionResult Get()
         {
             
-            Log_.PopulateLog("Author Get");
+            
             return Ok(new { status = "success", message = "success get data", data = Authors });
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int Id)
         {
-            Log_.PopulateLog($"Author ID : {Id} Get");
+            
             return Ok(Authors.Find(e => e.id == Id));
         }
 
         [HttpPost]
         public IActionResult AuthorAdd(Author author)
         {
-            Log_.PopulateLog("Author Posted");
+            
             return Ok(Authors.Append(author));
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteAuthor(int Id)
         {
-            Log_.PopulateLog($"Author ID : {Id} Deleted");
+            
             return Ok(Authors.RemoveAll(e => e.id == Id));
         }
 
@@ -62,7 +62,7 @@ namespace WEBAPI_Test.Controllers
         [HttpPatch("{id}")]
         public IActionResult PatchAuthor([FromBody]JsonPatchDocument<Author> patch, int Id)
         {
-            Log_.PopulateLog($"Author ID : {Id} Updated");
+            
             patch.ApplyTo(Authors.Find(e => e.id == Id));
             
             return Ok(Authors.Find(e => e.id == Id));

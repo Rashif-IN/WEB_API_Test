@@ -32,7 +32,6 @@ namespace WEBAPI_Test.Middleware
             else
             {
                 var time_start = DateTime.Now;
-                Log_.PopulateLog("Someone tried to access");
                 var text = "gaboleh";
                 var data = System.Text.Encoding.UTF8.GetBytes(text);
                 await context.Response.Body.WriteAsync(data, 0, data.Length);
@@ -61,11 +60,7 @@ namespace WEBAPI_Test.Middleware
             File.AppendAllText(@"/Users/user/Projects/WEBAPI_Test/app.log", $"[{DateTime.Now}] Completed {StatusCode} on {Address}{RequestPath} in {Time}  \n");
         }
 
-        public static void PopulateLog(string msg)
-        {
-
-            Msg = msg;
-        }
+       
     }
 
   
